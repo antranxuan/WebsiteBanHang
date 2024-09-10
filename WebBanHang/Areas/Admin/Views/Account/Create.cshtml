@@ -1,0 +1,91 @@
+﻿@model WebBanHang.Models.CreateAccountViewModel
+@{
+    ViewBag.Title = "Thêm mới tài khoản";
+}
+
+@section naviheader{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Home</a>
+        </li>
+
+    </ul>
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Thêm mới tài khoản</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
+                    <li class="breadcrumb-item active"><a href="/admin/account/index">Danh sách tài khoản</a></li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Thêm mới tài khoản</h3>
+
+            <div class="card-tools">
+
+            </div>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Create", "Account", FormMethod.Post))
+            {
+                @Html.ValidationSummary(false);
+                @Html.AntiForgeryToken();
+                <div class="form-group">
+                    <lable>User Name</lable>
+                    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <lable>Full Name</lable>
+                    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <lable>Email</lable>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <lable>Phone</lable>
+                    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <lable>Role</lable>
+                    @Html.DropDownListFor(x => x.Role, ViewBag.Role as SelectList, "Chon quyen", new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <lable>Password</lable>
+                    @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <lable>Confirm Password</lable>
+                    @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-sm btn-success btnLuu">Lưu</button>
+                </div>
+            }
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+
